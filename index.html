@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Germe — Chaque idée est une graine</title>
+<meta name="description" content="Tu notes tes idées, puis tu les oublies. Germe les capture à la voix, les cultive avec toi grâce à un agent IA, et te ramène vers elles avant qu'elles ne s'éteignent.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #0b0e0c; color: #f5f8f5; font-family: 'Inter', sans-serif; letter-spacing: -0.011em; -webkit-font-smoothing: antialiased; }
+a { color: #4fc286; text-decoration: none; }
+::selection { background: rgba(63,174,116,.35); }
+@keyframes spore { 0% { transform: translateY(0); opacity: 0; } 12% { opacity: .55; } 88% { opacity: .35; } 100% { transform: translateY(-72vh); opacity: 0; } }
+@keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes sway { 0%,100% { transform: rotate(-2deg); } 50% { transform: rotate(2.5deg); } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+@media (max-width: 860px) {
+  .navlinks { display: none !important; }
+  .hero-grid { grid-template-columns: 1fr !important; padding-top: 56px !important; }
+  .phone-col { margin-top: 10px; }
+}
+.faq-a { display: none; }
+.faq-item.open .faq-a { display: block; }
+.faq-item.open .faq-sym::before { content: "−"; }
+.faq-item:not(.open) .faq-sym::before { content: "+"; }
+</style>
+</head>
+<body>
+<div id="stem" style="position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#3fae74,#a8e063);z-index:99;transition:width .1s linear"></div>
+<div style="min-height:100vh; background:#0b0e0c;">
+
+<!-- NAV -->
+<nav style="position:sticky; top:0; z-index:50; backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); background:rgba(11,14,12,.72); border-bottom:1px solid #242b26;">
+  <div style="max-width:1120px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:14px 24px;">
+    <a href="#top" style="display:flex; align-items:center; gap:10px; color:#f5f8f5; font-weight:700; font-size:17px; letter-spacing:-0.02em;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3fae74" stroke-width="2" stroke-linecap="round"><path d="M12 21v-8"/><path d="M12 13c0-3.5-2.5-6-6-6 0 3.5 2.5 6 6 6z" fill="rgba(63,174,116,.18)"/><path d="M12 10c0-2.8 2-4.8 4.8-4.8 0 2.8-2 4.8-4.8 4.8z" fill="rgba(168,224,99,.15)" stroke="#a8e063"/></svg>
+      Germe
+    </a>
+    <div class="navlinks" style="display:flex; align-items:center; gap:26px; font-size:14px; font-weight:500;">
+      <a href="#features" style="color:#8b968d;" data-hover="color:#f5f8f5">Fonctionnalités</a>
+      <a href="#etapes" style="color:#8b968d;" data-hover="color:#f5f8f5">Comment ça marche</a>
+      <a href="#pricing" style="color:#8b968d;" data-hover="color:#f5f8f5">Tarifs</a>
+      <a href="#faq" style="color:#8b968d;" data-hover="color:#f5f8f5">FAQ</a>
+    </div>
+    <a href="#waitlist" style="background:#3fae74; color:#06130c; font-weight:600; font-size:14px; padding:9px 16px; border-radius:10px; transition:background 150ms;" data-hover="background:#4fc286">Rejoindre la liste</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="top" style="position:relative; overflow:hidden;">
+  <div style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(900px 500px at 70% 20%, rgba(63,174,116,.10), transparent 65%);"></div>
+  <div id="spores" style="position:absolute; inset:0; pointer-events:none;"></div>
+  <div class="hero-grid" style="position:relative; max-width:1120px; margin:0 auto; padding:88px 24px 72px; display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:center;">
+    <div style="animation:fadeUp .6s ease both;">
+      <div style="display:inline-flex; align-items:center; gap:8px; border:1px solid #242b26; background:#131714; border-radius:999px; padding:6px 14px; font-size:13px; color:#a8e063; font-weight:500;">
+        <span style="width:6px; height:6px; border-radius:50%; background:#a8e063; display:inline-block;"></span>
+        Bêta privée — ouverture cet été
+      </div>
+      <h1 style="font-size:clamp(34px,6vw,56px); line-height:1.05; letter-spacing:-0.03em; font-weight:800; margin:22px 0 18px;">Chaque idée est une graine.<br><span style="background:linear-gradient(90deg,#3fae74,#a8e063); -webkit-background-clip:text; background-clip:text; color:transparent;">Fais-la germer.</span></h1>
+      <p style="font-size:18px; line-height:1.6; color:#8b968d; margin:0 0 30px; max-width:480px;">Tu notes tes idées, puis tu les oublies. Germe les capture à la voix, les cultive avec toi grâce à un agent IA, et te ramène vers elles avant qu'elles ne s'éteignent.</p>
+      <div id="waitlist">
+        <form class="wl-form" style="display:flex; gap:10px; max-width:440px; flex-wrap:wrap;">
+          <input type="email" required placeholder="ton@email.fr" style="flex:1; min-width:220px; background:#131714; border:1px solid #242b26; border-radius:10px; padding:13px 16px; font-size:16px; color:#f5f8f5; font-family:inherit; outline:none;" data-focus="border-color:#3fae74; box-shadow:0 0 0 3px rgba(63,174,116,.18)">
+          <button type="submit" style="background:#3fae74; border:none; color:#06130c; font-weight:600; font-size:15px; padding:13px 20px; border-radius:10px; cursor:pointer; font-family:inherit; transition:background 150ms; white-space:nowrap;" data-hover="background:#4fc286">Rejoindre la liste</button>
+        </form>
+        <div class="wl-ok" style="display:none; align-items:center; gap:12px; border:1px solid rgba(63,174,116,.4); background:rgba(63,174,116,.08); border-radius:10px; padding:14px 18px; max-width:440px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a8e063" stroke-width="2" stroke-linecap="round"><path d="M12 21v-8"/><path d="M12 13c0-3.5-2.5-6-6-6 0 3.5 2.5 6 6 6z"/><path d="M12 10c0-2.8 2-4.8 4.8-4.8 0 2.8-2 4.8-4.8 4.8z"/></svg>
+          <span style="font-size:15px;">Ta graine est plantée. On te prévient dès que ça pousse.</span>
+        </div>
+      </div>
+      <p style="font-size:13px; color:#8b968d; margin:14px 0 0;">Gratuit pendant la bêta. Pas de spam, promis.</p>
+    </div>
+    <div class="phone-col" style="display:flex; justify-content:center; animation:fadeUp .6s ease .15s both;">
+      <div style="width:340px; max-width:88vw; background:#0b0e0c; border:1px solid #2a322c; border-radius:36px; padding:14px 12px 20px; box-shadow:0 40px 80px rgba(0,0,0,.5), 0 0 0 8px rgba(255,255,255,.02);">
+        <div style="width:90px; height:5px; background:#2a322c; border-radius:5px; margin:0 auto 14px;"></div>
+        <div style="background:#0b0e0c; font-family:'Inter',sans-serif; letter-spacing:-0.011em; overflow:hidden;">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;">
+            <div style="display:flex; align-items:center; gap:8px; font-weight:700; font-size:19px; color:#f5f8f5;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3fae74" stroke-width="2" stroke-linecap="round"><path d="M12 21v-8"/><path d="M12 13c0-3.5-2.5-6-6-6 0 3.5 2.5 6 6 6z"/><path d="M12 10c0-2.8 2-4.8 4.8-4.8 0 2.8-2 4.8-4.8 4.8z" stroke="#a8e063"/></svg>
+              Ton jardin
+            </div>
+            <div style="width:30px; height:30px; border-radius:50%; background:#1b201c; border:1px solid #242b26;"></div>
+          </div>
+          <div style="display:flex; gap:8px; margin-bottom:12px;">
+            <div style="flex:1; display:flex; align-items:center; gap:8px; background:#131714; border:1px solid #242b26; border-radius:10px; padding:11px 14px; color:#8b968d; font-size:14px;">
+              Sème une idée…
+              <svg style="margin-left:auto;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3fae74" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg>
+            </div>
+            <div style="width:42px; border-radius:10px; background:#3fae74; display:flex; align-items:center; justify-content:center; color:#06130c; font-size:20px; font-weight:600;">+</div>
+          </div>
+          <div style="display:flex; gap:6px; margin-bottom:12px;">
+            <div style="background:#1b201c; border:1px solid #3fae74; border-radius:999px; padding:5px 11px; font-size:12px; color:#f5f8f5; white-space:nowrap;">Toutes</div>
+            <div style="background:#131714; border:1px solid #242b26; border-radius:999px; padding:5px 11px; font-size:12px; color:#8b968d; white-space:nowrap; display:flex; align-items:center; gap:5px;"><span style="width:6px; height:6px; border-radius:50%; background:#f2c94c;"></span>En dév.</div>
+            <div style="background:#131714; border:1px solid #242b26; border-radius:999px; padding:5px 11px; font-size:12px; color:#8b968d; white-space:nowrap; display:flex; align-items:center; gap:5px;"><span style="width:6px; height:6px; border-radius:50%; background:#3fae74;"></span>En action</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:9px; background:rgba(242,153,74,.09); border:1px solid rgba(242,153,74,.35); border-radius:10px; padding:10px 13px; margin-bottom:12px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f2994a" stroke-width="2" stroke-linecap="round"><path d="M12 3s6 6.4 6 10.2a6 6 0 0 1-12 0C6 9.4 12 3 12 3z"/></svg>
+            <span style="font-size:13px; color:#f2994a; font-weight:500;">2 idées ont soif</span>
+            <span style="margin-left:auto; font-size:12px; color:#8b968d;">Arroser →</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="background:#131714; border:1px solid #242b26; border-radius:10px; padding:14px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                <span style="font-weight:600; font-size:15px; color:#f5f8f5;">Podcast jardins urbains</span>
+                <span style="font-size:11px; color:#3fae74; background:rgba(63,174,116,.12); border-radius:999px; padding:3px 8px; font-weight:500;">En action</span>
+              </div>
+              <p style="margin:0 0 10px; font-size:13px; color:#8b968d; line-height:1.45;">Interviews de gens qui cultivent en ville, format 20 min…</p>
+              <div style="height:4px; border-radius:2px; background:#1b201c; overflow:hidden; margin-bottom:8px;"><div style="width:64%; height:100%; border-radius:2px; background:linear-gradient(90deg,#3fae74,#a8e063); transform-origin:left; animation:grow 1.4s cubic-bezier(.2,.8,.2,1) both;"></div></div>
+              <div style="display:flex; gap:10px; font-size:12px; color:#8b968d;"><span>12 messages</span><span>3/5 étapes</span><span style="margin-left:auto; color:#4fc286;">→ Synthétiser</span></div>
+            </div>
+            <div style="background:#131714; border:1px solid #242b26; border-radius:10px; padding:14px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                <span style="font-weight:600; font-size:15px; color:#f5f8f5;">Newsletter IA &amp; création</span>
+                <span style="font-size:11px; color:#f2c94c; background:rgba(242,201,76,.1); border-radius:999px; padding:3px 8px; font-weight:500;">En dév.</span>
+              </div>
+              <p style="margin:0 0 10px; font-size:13px; color:#8b968d; line-height:1.45;">Une veille hebdo sur les outils IA pour créatifs…</p>
+              <div style="height:4px; border-radius:2px; background:#1b201c; overflow:hidden; margin-bottom:8px;"><div style="width:32%; height:100%; border-radius:2px; background:linear-gradient(90deg,#3fae74,#a8e063); transform-origin:left; animation:grow 1.4s cubic-bezier(.2,.8,.2,1) .3s both;"></div></div>
+              <div style="display:flex; gap:10px; font-size:12px; color:#8b968d;"><span>5 messages</span><span>1/4 étapes</span><span style="margin-left:auto; color:#4fc286;">→ Continuer l'interview</span></div>
+            </div>
+            <div style="background:#131714; border:1px solid #242b26; border-radius:10px; padding:14px;">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-weight:600; font-size:15px; color:#f5f8f5;">Atelier céramique entre amis</span>
+                <span style="font-size:11px; color:#8b968d; background:#1b201c; border-radius:999px; padding:3px 8px; font-weight:500;">Nouvelle</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PROBLEME -->
+<section style="border-top:1px solid #242b26; background:#0d100e;">
+  <div style="max-width:1120px; margin:0 auto; padding:88px 24px;">
+    <p style="font-size:13px; font-weight:600; color:#3fae74; text-transform:uppercase; letter-spacing:.08em; margin:0 0 12px;">Le problème</p>
+    <h2 style="font-size:clamp(26px,4.5vw,36px); letter-spacing:-0.03em; font-weight:800; margin:0 0 40px; max-width:560px;">L'app Notes est un cimetière à idées.</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px;">
+      <div style="border:1px solid #242b26; background:#131714; border-radius:10px; padding:28px;">
+        <div style="font-size:44px; font-weight:800; letter-spacing:-0.03em; color:#a8e063;">7 jours</div>
+        <p style="margin:10px 0 0; color:#8b968d; font-size:15px; line-height:1.55;">C'est le temps qu'il faut pour oublier pourquoi une idée t'excitait.</p>
+      </div>
+      <div style="border:1px solid #242b26; background:#131714; border-radius:10px; padding:28px;">
+        <div style="font-size:44px; font-weight:800; letter-spacing:-0.03em; color:#a8e063;">127</div>
+        <p style="margin:10px 0 0; color:#8b968d; font-size:15px; line-height:1.55;">Le nombre de notes qui dorment dans ton téléphone. Combien relues ?</p>
+      </div>
+      <div style="border:1px solid #242b26; background:#131714; border-radius:10px; padding:28px;">
+        <div style="font-size:44px; font-weight:800; letter-spacing:-0.03em; color:#a8e063;">0</div>
+        <p style="margin:10px 0 0; color:#8b968d; font-size:15px; line-height:1.55;">Le nombre d'outils qui t'aident à développer une idée. Ils stockent, point.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" style="border-top:1px solid #242b26;">
+  <div style="max-width:1120px; margin:0 auto; padding:88px 24px;">
+    <p style="font-size:13px; font-weight:600; color:#3fae74; text-transform:uppercase; letter-spacing:.08em; margin:0 0 12px;">Fonctionnalités</p>
+    <h2 style="font-size:clamp(26px,4.5vw,36px); letter-spacing:-0.03em; font-weight:800; margin:0 0 40px; max-width:620px;">Un cycle complet, pas un stockage de plus.</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:20px;">
+      <div style="border:1px solid #242b26; background:#131714; border-radius:10px; padding:30px; transition:transform 180ms, border-color 180ms;" data-hover="transform:translateY(-3px); border-color:#3fae74">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3fae74" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg>
+        <h3 style="font-size:19px; font-weight:700; letter-spacing:-0.02em; margin:16px 0 8px;">Sème à la voix</h3>
+        <p style="margin:0; color:#8b968d; font-size:15px; line-height:1.6;">Dicte ton idée brute, sans réfléchir à la forme. Germe la transcrit, la nettoie et la plante dans ton jardin.</p>
+      </div>
+      <div style="border:1px solid #242b26; background:#131714; border-radius:10px; padding:30px; transition:transform 180ms, border-color 180ms;" data-hover="transform:translateY(-3px); border-color:#3fae74">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3fae74" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M9 9h8"/><path d="M9 12h5"/></svg>
+        <h3 style="font-size:19px; font-weight:700; letter-spacing:-0.02em; margin:16px 0 8px;">Le jardinier t'interviewe</h3>
+        <p style="margin:0; color:#8b968d; font-size:15px; line-height:1.6;">Un agent IA pose les bonnes questions, une par une, structure ta pensée et en tire une synthèse claire.</p>
+      </div>
+      <div style="border:1px solid #242b26; background:#131714; border-radius:10px; padding:30px; transition:transform 180ms, border-color 180ms;" data-hover="transform:translateY(-3px); border-color:#3fae74">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3fae74" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h2"/><path d="M4 12h2"/><path d="M4 18h2"/><path d="M10 6h10"/><path d="M10 12h10"/><path d="M10 18h6"/></svg>
+        <h3 style="font-size:19px; font-weight:700; letter-spacing:-0.02em; margin:16px 0 8px;">Un plan, pas un vœu</h3>
+        <p style="margin:0 0 16px; color:#8b968d; font-size:15px; line-height:1.6;">Chaque idée reçoit ses prochaines étapes concrètes. La tige pousse à mesure que tu avances.</p>
+        <div style="height:5px; border-radius:3px; background:#1b201c; overflow:hidden;"><div style="width:64%; height:100%; border-radius:3px; background:linear-gradient(90deg,#3fae74,#a8e063); transform-origin:left; animation:grow 1.4s cubic-bezier(.2,.8,.2,1) both;"></div></div>
+      </div>
+      <div style="border:1px solid #242b26; background:#131714; border-radius:10px; padding:30px; transition:transform 180ms, border-color 180ms;" data-hover="transform:translateY(-3px); border-color:#f2994a">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f2994a" stroke-width="2" stroke-linecap="round"><path d="M12 3s6 6.4 6 10.2a6 6 0 0 1-12 0C6 9.4 12 3 12 3z"/></svg>
+        <h3 style="font-size:19px; font-weight:700; letter-spacing:-0.02em; margin:16px 0 8px;">Rien ne meurt oublié</h3>
+        <p style="margin:0; color:#8b968d; font-size:15px; line-height:1.6;">Une idée dort depuis 7 jours ? Elle a soif. Germe te la ramène pour l'arroser — ou la composter en conscience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ETAPES -->
+<section id="etapes" style="border-top:1px solid #242b26; background:#0d100e;">
+  <div style="max-width:1120px; margin:0 auto; padding:88px 24px;">
+    <p style="font-size:13px; font-weight:600; color:#3fae74; text-transform:uppercase; letter-spacing:.08em; margin:0 0 12px;">Comment ça marche</p>
+    <h2 style="font-size:clamp(26px,4.5vw,36px); letter-spacing:-0.03em; font-weight:800; margin:0 0 48px;">Sème. Cultive. Récolte.</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:32px; position:relative;">
+      <div style="position:relative; text-align:center;">
+        <div style="width:52px; height:52px; margin:0 auto 18px; border-radius:50%; background:#131714; border:1px solid #3fae74; display:flex; align-items:center; justify-content:center;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a8e063" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="14" rx="5" ry="6"/><path d="M12 8V5"/></svg>
+        </div>
+        <div style="font-size:12px; color:#3fae74; font-weight:600; letter-spacing:.08em; margin-bottom:6px;">01 — SÈME</div>
+        <p style="margin:0 auto; color:#8b968d; font-size:15px; line-height:1.6; max-width:260px;">Capture l'idée au moment où elle jaillit, à la voix ou au clavier. 30 secondes.</p>
+      </div>
+      <div style="position:relative; text-align:center;">
+        <div style="width:52px; height:52px; margin:0 auto 18px; border-radius:50%; background:#131714; border:1px solid #3fae74; display:flex; align-items:center; justify-content:center;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a8e063" stroke-width="2" stroke-linecap="round" style="animation:sway 5s ease-in-out infinite; transform-origin:bottom center;"><path d="M12 21v-8"/><path d="M12 13c0-3.5-2.5-6-6-6 0 3.5 2.5 6 6 6z"/><path d="M12 10c0-2.8 2-4.8 4.8-4.8 0 2.8-2 4.8-4.8 4.8z"/></svg>
+        </div>
+        <div style="font-size:12px; color:#3fae74; font-weight:600; letter-spacing:.08em; margin-bottom:6px;">02 — CULTIVE</div>
+        <p style="margin:0 auto; color:#8b968d; font-size:15px; line-height:1.6; max-width:260px;">Le jardinier t'interviewe, structure l'idée et en tire un plan d'action concret.</p>
+      </div>
+      <div style="position:relative; text-align:center;">
+        <div style="width:52px; height:52px; margin:0 auto 18px; border-radius:50%; background:#131714; border:1px solid #3fae74; display:flex; align-items:center; justify-content:center;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a8e063" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 5V3"/><path d="M12 21v-2"/><path d="M5 12H3"/><path d="M21 12h-2"/><path d="M7 7 5.6 5.6"/><path d="M18.4 5.6 17 7"/><path d="M7 17l-1.4 1.4"/><path d="M18.4 18.4 17 17"/></svg>
+        </div>
+        <div style="font-size:12px; color:#3fae74; font-weight:600; letter-spacing:.08em; margin-bottom:6px;">03 — RÉCOLTE</div>
+        <p style="margin:0 auto; color:#8b968d; font-size:15px; line-height:1.6; max-width:260px;">Avance étape par étape, arrose ce qui dort, et regarde tes idées fleurir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" style="border-top:1px solid #242b26;">
+  <div style="max-width:1120px; margin:0 auto; padding:88px 24px;">
+    <p style="font-size:13px; font-weight:600; color:#3fae74; text-transform:uppercase; letter-spacing:.08em; margin:0 0 12px;">Tarifs</p>
+    <h2 style="font-size:clamp(26px,4.5vw,36px); letter-spacing:-0.03em; font-weight:800; margin:0 0 40px;">Simple, comme un pot de terre.</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,420px)); gap:20px; justify-content:center;">
+      <div style="border:1px solid #242b26; background:#131714; border-radius:10px; padding:32px; display:flex; flex-direction:column;">
+        <h3 style="margin:0; font-size:18px; font-weight:700; letter-spacing:-0.02em;">Semis</h3>
+        <div style="margin:14px 0 4px; font-size:40px; font-weight:800; letter-spacing:-0.03em;">0 €</div>
+        <p style="margin:0 0 22px; color:#8b968d; font-size:14px;">Pour planter tes premières graines.</p>
+        <div style="display:flex; flex-direction:column; gap:11px; font-size:15px; color:#f5f8f5; margin-bottom:28px;">
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#3fae74;">✓</span>5 idées actives</div>
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#3fae74;">✓</span>Capture voix &amp; clavier</div>
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#3fae74;">✓</span>Agent jardinier (10 échanges par idée)</div>
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#3fae74;">✓</span>Export Markdown</div>
+        </div>
+        <a href="#waitlist" style="margin-top:auto; text-align:center; border:1px solid #242b26; background:#1b201c; color:#f5f8f5; font-weight:600; font-size:15px; padding:12px 20px; border-radius:10px; transition:border-color 150ms;" data-hover="border-color:#3fae74">Commencer gratuitement</a>
+      </div>
+      <div style="position:relative; border:1px solid #3fae74; background:linear-gradient(180deg, rgba(63,174,116,.07), rgba(19,23,20,1) 40%); border-radius:10px; padding:32px; display:flex; flex-direction:column;">
+        <div style="position:absolute; top:-11px; right:24px; background:#a8e063; color:#06130c; font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; border-radius:999px; padding:4px 10px;">Recommandé</div>
+        <h3 style="margin:0; font-size:18px; font-weight:700; letter-spacing:-0.02em;">Jardinier</h3>
+        <div style="margin:14px 0 4px; font-size:40px; font-weight:800; letter-spacing:-0.03em;">7 €<span style="font-size:17px; font-weight:500; color:#8b968d;"> /mois</span></div>
+        <p style="margin:0 0 22px; color:#8b968d; font-size:14px;">Sans engagement, annulable en un clic.</p>
+        <div style="display:flex; flex-direction:column; gap:11px; font-size:15px; color:#f5f8f5; margin-bottom:28px;">
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#a8e063;">✓</span>Idées illimitées</div>
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#a8e063;">✓</span>Agent complet, sans limite d'échanges</div>
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#a8e063;">✓</span>Revue anti-oubli &amp; arrosage</div>
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#a8e063;">✓</span>Priorisation du jardin</div>
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#a8e063;">✓</span>Mémoire du projet</div>
+        </div>
+        <a href="#waitlist" style="margin-top:auto; text-align:center; background:#3fae74; color:#06130c; font-weight:600; font-size:15px; padding:12px 20px; border-radius:10px; transition:background 150ms;" data-hover="background:#4fc286">Rejoindre la liste</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="border-top:1px solid #242b26; background:#0d100e;">
+  <div style="max-width:760px; margin:0 auto; padding:88px 24px;">
+    <p style="font-size:13px; font-weight:600; color:#3fae74; text-transform:uppercase; letter-spacing:.08em; margin:0 0 12px;">FAQ</p>
+    <h2 style="font-size:clamp(26px,4.5vw,36px); letter-spacing:-0.03em; font-weight:800; margin:0 0 36px;">Les questions qu'on nous pose.</h2>
+    <div id="faqList" style="display:flex; flex-direction:column; gap:12px;"></div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section style="border-top:1px solid #242b26; position:relative; overflow:hidden;">
+  <div style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(700px 380px at 50% 100%, rgba(63,174,116,.12), transparent 70%);"></div>
+  <div style="position:relative; max-width:680px; margin:0 auto; padding:100px 24px; text-align:center;">
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#3fae74" stroke-width="2" stroke-linecap="round" style="margin-bottom:20px;"><path d="M12 21v-8"/><path d="M12 13c0-3.5-2.5-6-6-6 0 3.5 2.5 6 6 6z" fill="rgba(63,174,116,.18)"/><path d="M12 10c0-2.8 2-4.8 4.8-4.8 0 2.8-2 4.8-4.8 4.8z" fill="rgba(168,224,99,.15)" stroke="#a8e063"/></svg>
+    <h2 style="font-size:clamp(28px,5vw,40px); letter-spacing:-0.03em; font-weight:800; margin:0 0 14px;">Rien ne meurt oublié ici.</h2>
+    <p style="color:#8b968d; font-size:17px; line-height:1.6; margin:0 0 30px;">Rejoins la liste d'attente et sois parmi les premiers à faire germer tes idées.</p>
+    <form class="wl-form" style="display:flex; gap:10px; max-width:440px; margin:0 auto; flex-wrap:wrap;">
+      <input type="email" required placeholder="ton@email.fr" style="flex:1; min-width:220px; background:#131714; border:1px solid #242b26; border-radius:10px; padding:13px 16px; font-size:16px; color:#f5f8f5; font-family:inherit; outline:none;" data-focus="border-color:#3fae74; box-shadow:0 0 0 3px rgba(63,174,116,.18)">
+      <button type="submit" style="background:#3fae74; border:none; color:#06130c; font-weight:600; font-size:15px; padding:13px 20px; border-radius:10px; cursor:pointer; font-family:inherit; transition:background 150ms; white-space:nowrap;" data-hover="background:#4fc286">Rejoindre la liste</button>
+    </form>
+    <div class="wl-ok" style="display:none; margin:0 auto; align-items:center; gap:12px; border:1px solid rgba(63,174,116,.4); background:rgba(63,174,116,.08); border-radius:10px; padding:14px 18px; max-width:440px;">
+      <span style="font-size:15px;">Ta graine est plantée. On te prévient dès que ça pousse.</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="border-top:1px solid #242b26;">
+  <div style="max-width:1120px; margin:0 auto; padding:36px 24px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+    <div style="display:flex; align-items:center; gap:10px; color:#8b968d; font-size:14px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3fae74" stroke-width="2" stroke-linecap="round"><path d="M12 21v-8"/><path d="M12 13c0-3.5-2.5-6-6-6 0 3.5 2.5 6 6 6z"/><path d="M12 10c0-2.8 2-4.8 4.8-4.8 0 2.8-2 4.8-4.8 4.8z"/></svg>
+      <span style="color:#f5f8f5; font-weight:600;">Germe</span> — l'app qui empêche tes idées de mourir.
+    </div>
+    <div style="display:flex; gap:22px; font-size:14px;">
+      <a href="#features" style="color:#8b968d;" data-hover="color:#f5f8f5">Fonctionnalités</a>
+      <a href="#pricing" style="color:#8b968d;" data-hover="color:#f5f8f5">Tarifs</a>
+      <a href="#faq" style="color:#8b968d;" data-hover="color:#f5f8f5">FAQ</a>
+    </div>
+    <div style="color:#8b968d; font-size:13px;">© 2026 Germe</div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+// ── CONFIGURATION WAITLIST ──────────────────────────────────────
+// 1. Compte gratuit sur https://formspree.io → crée un formulaire
+// 2. Remplace TON_ID_FORMSPREE par l'ID du formulaire (ex: "mqkvabcd")
+const FORMSPREE_ID = 'TON_ID_FORMSPREE';
+// ────────────────────────────────────────────────────────────────
+
+// Mini-runtime hover/focus (remplace le moteur de l'éditeur)
+function parseStyle(s) {
+  const o = {};
+  s.split(';').forEach(d => { const i = d.indexOf(':'); if (i > 0) o[d.slice(0, i).trim()] = d.slice(i + 1).trim(); });
+  return o;
+}
+document.querySelectorAll('[data-hover]').forEach(el => {
+  const on = parseStyle(el.dataset.hover), off = {};
+  Object.keys(on).forEach(k => off[k] = el.style.getPropertyValue(k));
+  el.addEventListener('mouseenter', () => Object.entries(on).forEach(([k, v]) => el.style.setProperty(k, v)));
+  el.addEventListener('mouseleave', () => Object.entries(off).forEach(([k, v]) => el.style.setProperty(k, v)));
+});
+document.querySelectorAll('[data-focus]').forEach(el => {
+  const on = parseStyle(el.dataset.focus), off = {};
+  Object.keys(on).forEach(k => off[k] = el.style.getPropertyValue(k));
+  el.addEventListener('focus', () => Object.entries(on).forEach(([k, v]) => el.style.setProperty(k, v)));
+  el.addEventListener('blur', () => Object.entries(off).forEach(([k, v]) => el.style.setProperty(k, v)));
+});
+
+// Spores flottantes du hero
+const sporesEl = document.getElementById('spores');
+for (let i = 0; i < 14; i++) {
+  const d = document.createElement('div');
+  const size = 3 + (i % 3) * 2;
+  d.style.cssText = `position:absolute; left:${(i * 73 + 9) % 100}%; bottom:-10px; width:${size}px; height:${size}px; border-radius:50%; background:#a8e063; opacity:0; animation:spore ${14 + (i % 5) * 4}s linear ${((i * 1.9) % 12).toFixed(1)}s infinite;`;
+  sporesEl.appendChild(d);
+}
+
+// FAQ
+const FAQS = [
+  {q: "Encore une app de notes ?", a: "Non. Les apps de notes stockent ; Germe cultive. Chaque idée entre dans un cycle : capture, interview par l'agent, synthèse, plan d'action, puis revue si elle s'endort. Le but n'est pas de garder tes idées, c'est de les faire aboutir."},
+  {q: "L'IA écrit à ma place ?", a: "Non. Le jardinier ne rédige pas ton projet : il te pose des questions, une par une, pour t'aider à clarifier ta propre pensée. L'idée reste la tienne — il ne fait que l'arroser."},
+  {q: "Mes idées restent privées ?", a: "Oui. Tes idées t'appartiennent et ne servent jamais à entraîner quoi que ce soit. Tu peux tout exporter en Markdown à tout moment, et tout supprimer en un geste."},
+  {q: "C'est disponible quand ?", a: "La bêta privée ouvre cet été, par vagues, dans l'ordre de la liste d'attente. Inscris-toi maintenant : les premiers semés seront les premiers servis."}
+];
+const faqList = document.getElementById('faqList');
+FAQS.forEach((f, i) => {
+  const item = document.createElement('div');
+  item.className = 'faq-item' + (i === 0 ? ' open' : '');
+  item.style.cssText = 'border:1px solid #242b26; background:#131714; border-radius:10px; overflow:hidden;';
+  item.innerHTML = `
+    <button style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; background:none; border:none; color:#f5f8f5; font-family:inherit; font-size:16px; font-weight:600; letter-spacing:-0.011em; text-align:left; padding:18px 20px; cursor:pointer;">
+      ${f.q}<span class="faq-sym" style="color:#3fae74; font-size:20px; font-weight:400; line-height:1;"></span>
+    </button>
+    <p class="faq-a" style="margin:0; padding:0 20px 20px; color:#8b968d; font-size:15px; line-height:1.65;">${f.a}</p>`;
+  item.querySelector('button').addEventListener('click', () => {
+    document.querySelectorAll('.faq-item').forEach(x => { if (x !== item) x.classList.remove('open'); });
+    item.classList.toggle('open');
+  });
+  faqList.appendChild(item);
+});
+
+// Tige de progression au scroll
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  document.getElementById('stem').style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+}, {passive: true});
+
+// Waitlist
+document.querySelectorAll('.wl-form').forEach(form => {
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const email = form.querySelector('input').value;
+    try {
+      if (FORMSPREE_ID !== 'TON_ID_FORMSPREE') {
+        await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+          body: JSON.stringify({email: email})
+        });
+      } else {
+        console.warn('Formspree non configuré — email non envoyé :', email);
+      }
+      form.style.display = 'none';
+      const ok = form.parentElement.querySelector('.wl-ok');
+      if (ok) ok.style.display = 'flex';
+    } catch (err) { alert('Une erreur est survenue, réessaie.'); }
+  });
+});
+</script>
+</body>
+</html>
